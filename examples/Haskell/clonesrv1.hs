@@ -13,8 +13,6 @@ import System.ZMQ3.Monadic (Socket(..),ZMQ(..))
 import Control.Monad.IO.Class(liftIO)
 import Control.Monad.CatchIO(MonadCatchIO, catch)
 import Control.Exception.Base(AsyncException(UserInterrupt))
--- TODO import Random (seed,getRand)
--- TODO import Time (sleep,time)
 
 import qualified Data.HashMap.Lazy as H
 import Control.Concurrent (threadDelay)
@@ -30,10 +28,8 @@ main = do
     liftIO $ threadDelay (200 * 1000) -- 200 ms
 
     let sequence = 0
--- TODO    liftIO $ time >>= seed 
     let kvmap = H.empty
 
-    -- TODO find how to manage ctrl+c in haskell (see zmq sample??)
    -- try:
     --    while True:
     sendKV sequence publisher kvmap

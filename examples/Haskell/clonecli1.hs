@@ -52,6 +52,7 @@ main = do
       kvmsg :: (KVMsg Integer Integer) <- recv upd
       let map = store kvmsg kvm
       let s = seq + 1
+      -- could have used poll instead of -1 or at least use a data type for KVMSG for End
       case kvmsg of
         (KVMsg _ (-1) _) -> liftIO (putStrLn ("Interrupted\n" ++ (show seq) ++ " messages in\n"))
         _ -> recvKV s upd map

@@ -56,7 +56,7 @@ store _ m = m
 
 -- Send key-value message to socket; any empty frames are sent as such.
 send :: (Z.Sender a, Binary k, Binary v) => KVMsg k v -> Socket z a -> ZMQ z ()
-send kvm sock = Z.send sock [] $ (BS.pack . LBS.unpack . encode) kvm
+send kvm sock = Z.send' sock [] $ encode kvm
 
 
 -- Reads key-value message from socket, returns new kvmsg instance.
